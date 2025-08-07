@@ -1,1 +1,0 @@
-# Healthcare data files
