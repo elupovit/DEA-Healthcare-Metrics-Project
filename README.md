@@ -1,39 +1,54 @@
 # DEA-Healthcare-Metrics-Project
+# Healthcare Analytics Pipeline
+*Enterprise-grade data platform processing 1.3M+ nursing records*
 
-# Healthcare Analytics Dashboard
+## 🏥 Project Overview
+Complete healthcare analytics platform analyzing nursing staffing efficiency across 14,522 facilities. Automated pipeline transforms raw healthcare data into actionable business insights.
 
-## Overview
-Interactive Streamlit dashboard analyzing 14,522 healthcare facilities with real-time performance insights.
+## 🚀 Live Results
+- **1.3M+ Records Processed** ✅
+- **14,522 Facilities Analyzed** ✅ 
+- **50+ State Benchmarks** ✅
+- **Real-time Dashboard** ✅
 
-## Features
-- **Facility Performance**: Rankings of most/least efficient facilities
-- **State Analysis**: Cross-state healthcare benchmarking
-- **Staffing Analysis**: Contract vs employee efficiency metrics
-- **Data Explorer**: Searchable facility database
-
-## Installation
-```bash
-pip install streamlit snowflake-connector-python pandas plotly
+## 🏗️ Architecture
+```
+Google Drive → AWS Lambda → S3 → Snowflake → dbt → Streamlit
+Raw Files      Daily 2AM     Bronze   Silver   Gold   Dashboard
+(Healthcare)   Automation    Layer    Layer    Layer  Analytics
 ```
 
-## Usage
-```bash
-streamlit run streamlit_app.py
+## 🛠️ Technology Stack
+- **Cloud**: AWS Lambda, S3
+- **Data Warehouse**: Snowflake (Medallion Architecture)
+- **Transformations**: dbt Cloud
+- **Dashboard**: Streamlit + Plotly
+- **Scheduling**: Event-driven automation
+
+## 📊 Key Features
+- **Facility Performance Rankings**: Top/bottom performers by efficiency
+- **State Benchmarking**: Cross-state healthcare comparisons  
+- **Contract Staffing Analysis**: Optimization insights
+- **Interactive Filtering**: Real-time data exploration
+- **Automated Updates**: Daily pipeline execution
+
+## 📁 Repository Structure
+```
+├── aws-lambda/          # Serverless data ingestion
+├── snowflake/          # Data warehouse setup & automation
+├── streamlit-dashboard/ # Interactive analytics interface
+└── docs/               # Project documentation
 ```
 
-## Configuration
-1. Enter Snowflake credentials in sidebar
-2. Connect to HEALTHCARE_ANALYTICS database
-3. Access Gold layer analytics tables
+## 🎯 Business Impact
+- Identifies staffing inefficiencies across 14K+ facilities
+- Enables data-driven healthcare resource optimization
+- Provides state-level performance benchmarking
+- Real-time monitoring of nursing productivity metrics
 
-## Data Sources
-- `gold_facility_performance_summary` - 14,522 facility metrics
-- `gold_state_benchmarks` - 50+ state comparisons
+## ⚡ Quick Start
+1. Review `/aws-lambda/` for data pipeline setup
+2. Execute `/snowflake/` scripts for data warehouse
+3. Deploy `/streamlit-dashboard/` for analytics interface
 
-## Key Metrics
-- Average nursing hours per patient
-- Contract staff percentages
-- Patient census data
-- RN staffing ratios
-
-Built with Streamlit + Plotly for enterprise-grade healthcare analytics.
+**Built with enterprise data engineering best practices**
