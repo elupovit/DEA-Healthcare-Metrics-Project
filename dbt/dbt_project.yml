@@ -1,0 +1,41 @@
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'healthcare_analytics'
+version: '1.0.0'
+config-version: 2
+
+# This setting configures which "profile" dbt uses for this project.
+profile: 'healthcare_analytics'
+
+vars:
+   wrk_schema: BRONZE
+   file_format_csv: HEALTHCARE_ANALYTICS.BRONZE.MY_CSV_FORMAT
+   purge_status: FALSE
+   stage_name: HEALTHCARE_ANALYTICS.BRONZE.S3_HEALTHCARE_STAGE
+   rawhist_db: HEALTHCARE_ANALYTICS
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# CORRECTED MODEL CONFIGURATION
+models:
+  healthcare_analytics:
+    # Remove or comment out example models
+    # example:
+    #     schema: example 
+    silver:
+        +materialized: table
+        +schema: silver
+    gold:
+        +materialized: table  # FIXED: was "view" and missing "+"
+        +schema: gold
